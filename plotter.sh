@@ -21,8 +21,7 @@ echo "chia plots create ${ARG} -t /tmp01 -2 /tmp02 -d /dst -f ${FPK} -p ${PPK}"
 
 while [ ! -f /root/run/stop ]
 do
-  rm /tmp01/*.tmp
-  rm /tmp02/*.tmp
+  rm /tmp01/*.tmp /tmp02/*.tmp
   chia plots create ${ARG} -t /tmp01 -2 /tmp02 -d /dst -f ${FPK} -p ${PPK}
   sleep 30s
 done
