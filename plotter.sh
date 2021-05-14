@@ -17,13 +17,13 @@ if [ ${PPK}x = ''x ]; then
     read PPK < _ppk.txt
 fi
 
-#echo "chia plots create ${ARG} -f ${FPK} -p ${PPK}"
+echo "chia plots create ${ARG} -t /tmp01 -2 /tmp02 -d /dst -f ${FPK} -p ${PPK}"
 
 while [ ! -f /root/run/stop ]
 do
   rm /tmp01/*.tmp
   rm /tmp02/*.tmp
   chia plots create ${ARG} -t /tmp01 -2 /tmp02 -d /dst -f ${FPK} -p ${PPK}
-  sleep 5s
+  sleep 30s
 done
 echo Stopfile found, exiting
