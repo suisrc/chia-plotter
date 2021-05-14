@@ -1,0 +1,67 @@
+name: ci
+
+# https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context
+# https://help.github.com/en/actions/reference/events-that-trigger-workflows
+on:
+  push:
+    branches: [ master ]
+
+env:
+  GITHUB_IMAGE_NAME: chia-plotter
+  DOCKER_IMAGE_NAME: suisrc/chia-plotter
+  DOCKER_VERSION: '1.1.5-01'
+  QUAY_REGISTRY: quay.io
+  DOCKER_REGISTRY: docker.io
+  GITHUB_REGISTRY: docker.pkg.github.com
+  ALIYUN_REGISTRY: registry.cn-hongkong.aliyuncs.com
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: |
+          docker build ./ --file ./Dockerfile --tag image
+
+#      - name: Push docker image
+#        run: |
+#          REGISTRY_URL=$DOCKER_REGISTRY
+#          echo "${{ secrets.DOCKER_TOKEN }}" | docker login $REGISTRY_URL -u ${{ secrets.DOCKER_USER }} --password-stdin
+#
+#          IMAGE_ID=$REGISTRY_URL/$DOCKER_IMAGE_NAME
+#          echo IMAGE_ID=$IMAGE_ID
+#          VERSION=$DOCKER_VERSION-${{ github.job }}
+#          echo VERSION=$VERSION
+#
+#          docker tag image $IMAGE_ID:$VERSION
+#          docker push $IMAGE_ID:$VERSION
+
+      - name: Push quay image
+        run: |
+          REGISTRY_URL=$QUAY_REGISTRY
+          echo "${{ secrets.QUAY_TOKEN }}" | docker login $REGISTRY_URL -u ${{ secrets.QUAY_USER }} --password-stdin
+
+          IMAGE_ID=$REGISTRY_URL/$DOCKER_IMAGE_NAME
+          echo IMAGE_ID=$IMAGE_ID
+          VERSION=$DOCKER_VERSION
+          echo VERSION=$VERSION
+
+          docker tag image $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
+
+#      - name: Push aliyun image
+#        run: |
+#          REGISTRY_URL=$ALIYUN_REGISTRY
+#          echo "${{ secrets.ALIYUN_TOKEN }}" | docker login $REGISTRY_URL -u ${{ secrets.ALIYUN_USER }} --password-stdin
+#
+#          IMAGE_ID=$REGISTRY_URL/$DOCKER_IMAGE_NAME
+#          echo IMAGE_ID=$IMAGE_ID
+#          VERSION=$DOCKER_VERSION-${{ github.job }}
+#          echo VERSION=$VERSION
+#
+#          docker tag image $IMAGE_ID:$VERSION
+#          docker push $IMAGE_ID:$VERSION
+
