@@ -1,11 +1,11 @@
-chia_location:
+chia_location: /usr/local/bin/chia
 
 manager:
   check_interval: 60
   log_level: ERROR
 
 log:
-  #folder_path: /logs
+  folder_path: /logs
 
 view:
   check_interval: 60
@@ -17,6 +17,18 @@ view:
   include_plot_stats: true
 
 notifications:
+  notify_discord: false
+  discord_webhook_url: https://discord.com/api/webhooks/
+  notify_sound: false
+  song: audio.mp3
+  notify_pushover: false
+  pushover_user_key: xx
+  pushover_api_key: xx
+  notify_twilio: false
+  twilio_account_sid: xxxxx
+  twilio_auth_token: xxxxx
+  twilio_from_phone: +1234657890
+  twilio_to_phone: +1234657890
 
 progress:
   phase1_line_end: 801

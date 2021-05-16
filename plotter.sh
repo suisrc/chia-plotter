@@ -1,11 +1,11 @@
 #!/bin/bash
 
 ./clear.sh
+python manager.py start
+python manager.py view
 
-python3 manager.py start
-
-echo "Press CTRL+C to exit"
-while true
-do
-  sleep 60
-done
+#echo "Press CTRL+C to exit"
+#while true
+#do
+#  sleep 60
+#done
