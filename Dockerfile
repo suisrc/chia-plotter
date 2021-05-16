@@ -7,5 +7,5 @@ RUN apt-get update && apt-get install -y htop && rm -rf /tmp/* /var/tmp/* /var/l
 WORKDIR /app
 RUN git clone -b main https://github.com/swar/Swar-Chia-Plot-Manager.git . && pip install -r requirements.txt
 
-COPY plotter.sh clear.sh config.yaml /app
+COPY plotter.sh clear.sh config.yaml /app/
 CMD ./plotter.sh
