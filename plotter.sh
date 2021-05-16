@@ -1,27 +1,11 @@
 #!/bin/bash
 
-# The param
-ARG=`sed -n 1p _ctm.txt`
-if [ ${ARG}x = ''x ]; then
-    read ARG < _arg.txt
-fi
-# The farmer public key
-FPK=`sed -n 2p _ctm.txt`
-if [ ${FPK}x = ''x ]; then
-    read FPK < _fpk.txt
-fi
-# The pool public key
-PPK=`sed -n 3p _ctm.txt`
-if [ ${PPK}x = ''x ]; then
-    read PPK < _ppk.txt
-fi
+./clear.sh
 
-echo "chia plots create ${ARG} -f ${FPK} -p ${PPK}"
+python3 manager.py start
 
-while [ ! -f /root/run/stop ]
+echo "Press CTRL+C to exit"
+while true
 do
-    ./clear.sh
-    chia plots create ${ARG} -f ${FPK} -p ${PPK}
-    sleep 30s
+  sleep 60
 done
-echo Stopfile found, exiting

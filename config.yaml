@@ -1,0 +1,54 @@
+chia_location:
+
+manager:
+  check_interval: 60
+  log_level: ERROR
+
+log:
+  #folder_path: /logs
+
+view:
+  check_interval: 60
+  datetime_format: "%Y-%m-%d %H:%M:%S"
+  include_seconds_for_phase: false
+  include_drive_info: true
+  include_cpu: true
+  include_ram: true
+  include_plot_stats: true
+
+notifications:
+
+progress:
+  phase1_line_end: 801
+  phase2_line_end: 834
+  phase3_line_end: 2474
+  phase4_line_end: 2620
+  phase1_weight: 33.4
+  phase2_weight: 20.43
+  phase3_weight: 42.29
+  phase4_weight: 3.88
+
+global:
+  max_concurrent: 9
+
+jobs:
+  - name: suisrc
+    max_plots: 999
+    farmer_public_key: 80f444a6776384c680e25995bab438a9433b8dc2a9a0b0673f564d2c48ed8f163e1be45dcce231b4f13dc272811feb20
+    pool_public_key: 8daf43d977c89fc0603ce52626f2536ea3b6cd14b58a828f5d856635bb38d497a4eddf57872a42d6cd5158b738786b3c
+    temporary_directory: /tmp01
+    temporary2_directory: /tmp01
+    destination_directory:
+      - /plots
+    size: 32
+    bitfield: true
+    threads: 8
+    buckets: 128
+    memory_buffer: 4000
+    max_concurrent: 2
+    max_concurrent_with_start_early: 3
+    stagger_minutes: 180
+    max_for_phase_1: 1
+    concurrency_start_early_phase: 4
+    concurrency_start_early_phase_delay: 0
+    temporary2_destination_sync: false

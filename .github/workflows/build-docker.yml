@@ -4,12 +4,12 @@ name: ci
 # https://help.github.com/en/actions/reference/events-that-trigger-workflows
 on:
   push:
-    branches: [ master ]
+    branches: [ swar ]
 
 env:
   GITHUB_IMAGE_NAME: chia-plotter
   DOCKER_IMAGE_NAME: suisrc/chia-plotter
-  DOCKER_VERSION: '1.1.5-01'
+  DOCKER_VERSION: '1.1.5-m01'
   QUAY_REGISTRY: quay.io
   DOCKER_REGISTRY: docker.io
   GITHUB_REGISTRY: docker.pkg.github.com
