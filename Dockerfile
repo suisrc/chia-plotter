@@ -13,6 +13,7 @@ RUN git clone -b main https://github.com/swar/Swar-Chia-Plot-Manager.git /chia/p
     cd /chia/plotter && pip install -r requirements.txt
 
 COPY config.yaml /chia/plotter/
+RUN echo "#!/bin/bash \npy manager.py $1" > /chia/rc.sh && chmod +x /chia/rc.sh
 
 WORKDIR /chia
 
