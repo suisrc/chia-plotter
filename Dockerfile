@@ -21,6 +21,6 @@ RUN echo "#!/usr/bin/execlineb -P\ncode-server --bind-addr 0.0.0.0:7000 --disabl
 
 # 增加启动项/手动启动
 # RUN mkdir -p "/etc/services.d/plotter" && \
-#     echo "#!/usr/bin/execlineb -P\ncd /plotter && py manager.py start" > /etc/services.d/plotter/run && \
+#     echo "#!/usr/bin/execlineb -P\ncd /chia/plotter && py manager.py start" > /etc/services.d/plotter/run && \
 #     chmod +x /etc/services.d/plotter/run
 
