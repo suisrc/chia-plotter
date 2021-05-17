@@ -3,7 +3,7 @@ FROM docker.pkg.github.com/suisrc/docker-vscode/vscode:1.54.2
 
 RUN apt-get update && \
     apt-get install -y htop python3 python3-pip &&\
-    ln -s /usr/bin/python3 /usr/local/bin/py && \
+    ln -s /usr/bin/python3 /usr/local/bin/python && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 RUN pip3 install --upgrade pip
@@ -13,7 +13,7 @@ RUN git clone -b main https://github.com/swar/Swar-Chia-Plot-Manager.git /chia/p
     cd /chia/plotter && pip install -r requirements.txt
 
 COPY config.yaml /chia/plotter/
-RUN echo "#!/bin/bash \ncd /chia/plotter && py manager.py \$1" > /chia/rc.sh && chmod +x /chia/rc.sh
+RUN echo "#!/bin/bash \ncd /chia/plotter && python manager.py \\$1" > /chia/rc.sh && chmod +x /chia/rc.sh
 
 WORKDIR /chia
 
