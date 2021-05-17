@@ -17,7 +17,7 @@ COPY config.yaml /chia/plotter/
 WORKDIR /chia
 
 # 修改启动项
-RUN echo "#!/usr/bin/execlineb -P\ncode-server --bind-addr 0.0.0.0:7000 --disable-telemetry --disable-update-check /plotter" > /etc/services.d/vscode/run
+RUN echo "#!/usr/bin/execlineb -P\ncode-server --bind-addr 0.0.0.0:7000 --disable-telemetry --disable-update-check /chia" > /etc/services.d/vscode/run
 
 # 增加启动项/手动启动
 # RUN mkdir -p "/etc/services.d/plotter" && \
