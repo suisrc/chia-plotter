@@ -9,7 +9,7 @@ on:
 env:
   GITHUB_IMAGE_NAME: chia-plotter
   DOCKER_IMAGE_NAME: suisrc/chia-plotter
-  DOCKER_VERSION: '1.1.5-m03'
+  DOCKER_VERSION: '1.2.0'
   QUAY_REGISTRY: quay.io
   DOCKER_REGISTRY: docker.io
   GITHUB_REGISTRY: docker.pkg.github.com
